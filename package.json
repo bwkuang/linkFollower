@@ -1,0 +1,24 @@
+{
+  "name": "linkfollower",
+  "version": "1.0.0",
+  "description": "Follow links in a web page",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bwkuang/linkFollower.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bwkuang/linkFollower/issues"
+  },
+  "homepage": "https://github.com/bwkuang/linkFollower#readme"
+}
