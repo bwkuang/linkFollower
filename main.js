@@ -1,14 +1,18 @@
 const http = require('http');
 const syncRequest = require('sync-request');
 
+function getResponse(url){
+    return syncRequest('GET', url); 
+}
+
 function getHttpStatusCode(url){
-    var response = syncRequest('GET', url);
+    var response = getResponse(url);
     return response.statusCode;
-    // return 200;
 }
 
 function getResponseBody(url){
-    return '123 Services de Téléphonie, Internet, Télévision et Mobile | Vidéotron 123';
+    var response = getResponse(url);
+    return response.getBody();
 }
 
 module.exports.getHttpStatusCode = getHttpStatusCode;
