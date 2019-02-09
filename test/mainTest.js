@@ -19,10 +19,10 @@ describe('Testing my link follower', function(){
     //     assert.match(responseBody, new RegExp('.*Le site d\'information francophone le plus complet en Amérique du Nord: Actualités régionales, provinciales, nationales et internationales.*'));
     // });
 
-    // it('Should save a picture', function(){
-    //     var isSaved = linkFollower.savePictureInSpecifiedFolder(urlPicture, 'Z:\\pictureTest');
-    //     assert.isTrue(isSaved);
-    // });
+    it('Should save a picture', function(){
+        var isSaved = linkFollower.savePictureInSpecifiedFolder(urlPicture, 'pictures');
+        assert.isTrue(isSaved);
+    });
 
 
     // it('Should get the link of a picture based on regex', function(){
@@ -34,21 +34,30 @@ describe('Testing my link follower', function(){
     // });
 
 
-    it('Should get list of links', function(){
-        var urlFlickr = 'https://blog.flickr.net/en/2018/11/07/the-commons-the-past-is-100-part-of-our-future/';
-        var expectedLink0 = 'https://www.flickr.com/photos/nasacommons/9467312978/';
-        var expectedLink1 = 'https://www.flickr.com/photos/nationallibrarynz_commons/3057385436/';
-        var expectedLink2 = 'https://www.flickr.com/photos/nationalarchives/2966603041/';
-        linkRegExpression = 'https:\/\/www.flickr.com\/photos\/.*\/\\d{10}/';
+    // it('Should get list of links', function(){
+    //     var urlFlickr = 'https://blog.flickr.net/en/2018/11/07/the-commons-the-past-is-100-part-of-our-future/';
+    //     var expectedLink0 = 'https://www.flickr.com/photos/nasacommons/9467312978/';
+    //     var expectedLink1 = 'https://www.flickr.com/photos/nationallibrarynz_commons/3057385436/';
+    //     var expectedLink2 = 'https://www.flickr.com/photos/nationalarchives/2966603041/';
+    //     linkRegExpression = 'https:\/\/www.flickr.com\/photos\/.*\/\\d{10}/';
         
-        var actualLinks =linkFollower.grabListOfLinks(urlFlickr, linkRegExpression);
+    //     var actualLinks =linkFollower.grabListOfLinks(urlFlickr, linkRegExpression);
         
-        assert.isTrue(actualLinks.includes(expectedLink0));
-        assert.isTrue(actualLinks.includes(expectedLink1));
-        assert.isTrue(actualLinks.includes(expectedLink2));
-    });
+    //     assert.isTrue(actualLinks.includes(expectedLink0));
+    //     assert.isTrue(actualLinks.includes(expectedLink1));
+    //     assert.isTrue(actualLinks.includes(expectedLink2));
+    // });
 
-    // it('Should get ')
+    // it('Should save pictures', function(){
+    //     var urlFlickr = 'https://blog.flickr.net/en/2018/11/07/the-commons-the-past-is-100-part-of-our-future/';
+        
+    //     var linksRegexp= '';
+    //     var pictureRegexp = '';
+
+    //     var folder = './pictures'
+
+    //     linkFollower.savePicturesInSpecifiedFolder(urlFlickr, linksRegexp, pictureRegexp, folder);
+    // });
 
     // it('Test regex', function(){
 

@@ -1,6 +1,8 @@
 const http = require('http');
 const syncRequest = require('sync-request');
 const fs = require('fs');
+const path = require('path');
+
 
 function getResponse(url){
     return syncRequest('GET', url); 
@@ -22,13 +24,18 @@ function getResponseBodyAsString(url){
 
 function savePictureInSpecifiedFolder(url, folder){
     var response = getResponse(url);
-    fs.writeFile(folder + '\\mypicture.jpg', response.getBody(), function(err){
-        if(err){
-            console.log(err);
-            return false;
-        }
-        
+    fs.mkdir(path.normalize(folder), { recursive: true }, (err) => {
+        if (err) throw err;
+
+        fs.writeFile(path.join(folder, 'mypicture.jpg'), response.getBody(), function(err){
+            if(err){
+                console.log(err);
+                return false;
+            }
+            
+        });
     });
+   
     return true;
 }
 
