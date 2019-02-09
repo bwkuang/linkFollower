@@ -16,6 +16,10 @@ function getResponseBody(url){
     return response.getBody();
 }
 
+function getResponseBodyAsString(url){
+    return String(getResponseBody(url));
+}
+
 function savePictureInSpecifiedFolder(url, folder){
     var response = getResponse(url);
     fs.writeFile(folder + '\\mypicture.jpg', response.getBody(), function(err){
@@ -29,14 +33,22 @@ function savePictureInSpecifiedFolder(url, folder){
 }
 
 function grabLinkOfPicture(urlPaperWithPicture, regExpression){
-    var responseBody = String(getResponse(urlPaperWithPicture).getBody());
-    var linkRegex = new RegExp(regExpression);
+    var responseBody = getResponseBodyAsString(urlPaperWithPicture);
+    var linkRegex = new RegExp(regExpression, 'g');
     var linkWithEnvelop = responseBody.match(linkRegex)[0]
     var link = linkWithEnvelop.match(new RegExp('http.*jpg'));
     return link;
+}
+
+function grabListOfLinks(urlWithLinks, linkRegExpression){
+    var responseBody = getResponseBodyAsString(urlWithLinks);
+    var linkRegex = new RegExp(linkRegExpression, 'g');
+    var links = responseBody.match(linkRegex);
+    return links;
 }
 
 module.exports.getHttpStatusCode = getHttpStatusCode;
 module.exports.getResponseBody = getResponseBody;
 module.exports.savePictureInSpecifiedFolder = savePictureInSpecifiedFolder;
 module.exports.grabLinkOfPicture = grabLinkOfPicture;
+module.exports.grabListOfLinks = grabListOfLinks;
