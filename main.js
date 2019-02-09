@@ -45,7 +45,7 @@ function savePictureInSpecifiedFolder(url, folder){
 function savePictureFromWebPageInSpecifiedFolder(urlPageWithPicture, regexPicture, folder){
     var linkPicture = grabLinkOfPicture(urlPageWithPicture, regexPicture);
 
-    savePictureInSpecifiedFolder(linkPicture, 'picture');
+    savePictureInSpecifiedFolder(linkPicture, folder);
     
     return true;
 }
