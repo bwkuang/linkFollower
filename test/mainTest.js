@@ -25,13 +25,13 @@ describe('Testing my link follower', function(){
     // });
 
 
-    it('Should get the link of a picture based on regex', function(){
-        var regExpression = 'href="https:\/\/images.lpcdn.ca\/.*jpg"';
-        var expectedLink = 'https://images.lpcdn.ca/924x615/201902/09/1612163-pendant-jours-tas-glace-plus.jpg';
+    // it('Should get the link of a picture based on regex', function(){
+    //     var regExpression = 'href="https:\/\/images.lpcdn.ca\/.*jpg"';
+    //     var expectedLink = 'https://images.lpcdn.ca/924x615/201902/09/1612163-pendant-jours-tas-glace-plus.jpg';
 
-        var actualLink = linkFollower.grabLinkOfPicture(urlPaperWithPicture, regExpression);
-        assert.equal(actualLink, expectedLink);
-    });
+    //     var actualLink = linkFollower.grabLinkOfPicture(urlPaperWithPicture, regExpression);
+    //     assert.equal(actualLink, expectedLink);
+    // });
 
 
     it('Should get list of links', function(){
@@ -40,15 +40,15 @@ describe('Testing my link follower', function(){
         var expectedLink1 = 'https://www.flickr.com/photos/nationallibrarynz_commons/3057385436/';
         var expectedLink2 = 'https://www.flickr.com/photos/nationalarchives/2966603041/';
         linkRegExpression = 'https:\/\/www.flickr.com\/photos\/.*\/\\d{10}/';
-        // linkRegExpression = 'https:\/\/www.flickr.com\/photos\/';
         
-
-        var links =linkFollower.grabListOfLinks(urlFlickr, linkRegExpression);
-
-        assert.equal(links[0], expectedLink0);
-        assert.equal(links[1], expectedLink1);
-        assert.equal(links[2], expectedLink2);
+        var actualLinks =linkFollower.grabListOfLinks(urlFlickr, linkRegExpression);
+        
+        assert.isTrue(actualLinks.includes(expectedLink0));
+        assert.isTrue(actualLinks.includes(expectedLink1));
+        assert.isTrue(actualLinks.includes(expectedLink2));
     });
+
+    // it('Should get ')
 
     // it('Test regex', function(){
 
