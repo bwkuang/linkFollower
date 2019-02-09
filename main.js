@@ -25,7 +25,10 @@ function getResponseBodyAsString(url){
 function savePictureInSpecifiedFolder(url, folder){
     var response = getResponse(url);
     fs.mkdir(path.normalize(folder), { recursive: true }, (err) => {
-        if (err) throw err;
+        if (err){
+            console.log(console.err);
+            return false;
+        }
 
         fs.writeFile(path.join(folder, 'mypicture.jpg'), response.getBody(), function(err){
             if(err){
@@ -39,8 +42,16 @@ function savePictureInSpecifiedFolder(url, folder){
     return true;
 }
 
-function grabLinkOfPicture(urlPaperWithPicture, regExpression){
-    var responseBody = getResponseBodyAsString(urlPaperWithPicture);
+function savePictureFromWebPageInSpecifiedFolder(urlPageWithPicture, regexPicture, folder){
+    var linkPicture = grabLinkOfPicture(urlPageWithPicture, regexPicture);
+
+    savePictureInSpecifiedFolder(linkPicture, 'picture');
+    
+    return true;
+}
+
+function grabLinkOfPicture(urlPageWithPicture, regExpression){
+    var responseBody = getResponseBodyAsString(urlPageWithPicture);
     var linkRegex = new RegExp(regExpression, 'g');
     var linkWithEnvelop = responseBody.match(linkRegex)[0]
     var link = linkWithEnvelop.match(new RegExp('http.*jpg'));
@@ -59,3 +70,4 @@ module.exports.getResponseBody = getResponseBody;
 module.exports.savePictureInSpecifiedFolder = savePictureInSpecifiedFolder;
 module.exports.grabLinkOfPicture = grabLinkOfPicture;
 module.exports.grabListOfLinks = grabListOfLinks;
+module.exports.savePictureFromWebPageInSpecifiedFolder = savePictureFromWebPageInSpecifiedFolder;

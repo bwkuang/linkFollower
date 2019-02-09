@@ -19,10 +19,10 @@ describe('Testing my link follower', function(){
     //     assert.match(responseBody, new RegExp('.*Le site d\'information francophone le plus complet en Amérique du Nord: Actualités régionales, provinciales, nationales et internationales.*'));
     // });
 
-    it('Should save a picture', function(){
-        var isSaved = linkFollower.savePictureInSpecifiedFolder(urlPicture, 'pictures');
-        assert.isTrue(isSaved);
-    });
+    // it('Should save a picture', function(){
+    //     var isSaved = linkFollower.savePictureInSpecifiedFolder(urlPicture, 'pictures');
+    //     assert.isTrue(isSaved);
+    // });
 
 
     // it('Should get the link of a picture based on regex', function(){
@@ -32,6 +32,15 @@ describe('Testing my link follower', function(){
     //     var actualLink = linkFollower.grabLinkOfPicture(urlPaperWithPicture, regExpression);
     //     assert.equal(actualLink, expectedLink);
     // });
+
+    it('Should save a the picture from a web page', function(){
+        var regexPicture = 'https:\/\/www.flickr.com\/photos\/.*\/\\d{10}/';
+        var urlPageWithPicture = 'https://www.flickr.com/photos/nasacommons/9467312978';
+
+        linkFollower.savePictureFromWebPageInSpecifiedFolder(urlPageWithPicture, regexPicture, 'pictures');
+
+        // isPictureDownloaded();
+    });
 
 
     // it('Should get list of links', function(){
@@ -47,6 +56,7 @@ describe('Testing my link follower', function(){
     //     assert.isTrue(actualLinks.includes(expectedLink1));
     //     assert.isTrue(actualLinks.includes(expectedLink2));
     // });
+
 
     // it('Should save pictures', function(){
     //     var urlFlickr = 'https://blog.flickr.net/en/2018/11/07/the-commons-the-past-is-100-part-of-our-future/';
